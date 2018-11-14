@@ -1,119 +1,88 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/ListPage.dart';
+import 'package:learn_flutter/SecondPage.dart';
 
-void main() => runApp(new MyApp());
+void main(){
+  runApp(MyApp());
+}
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatelessWidget{
+
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: "LearnFlutter",
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: Colors.red
       ),
-      home: RandomWords()
+      home: HomePage()
     );
   }
 }
 
-class RandomWords extends StatefulWidget {
+class HomePage extends StatefulWidget{
   @override
-  createState() => RandomWordsState();
-
+  State<StatefulWidget> createState() {
+    return HomePageState();
+  }
 }
 
-class RandomWordsState extends State {
-  
-  final _suggestions = [];
+class HomePageState extends State<HomePage>{
 
-  final _saved = Set();
-  
-  final _biggerFont = TextStyle(fontSize: 18.0);
-  
+  int _index = 0;
+
+  var _pageController = PageController();
+
+  var _pages = <Widget>[ListPage(), SecondPage(), SecondPage(), SecondPage()];
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Startup Name Generator"),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved)
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+//        fixedColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.message), activeIcon: Icon(Icons.message, color: Colors.red), title: Text("消息")),
+          BottomNavigationBarItem(icon: Icon(Icons.contacts), activeIcon: Icon(Icons.contacts, color: Colors.red,),title: Text("通讯录")),
+          BottomNavigationBarItem(icon: Icon(Icons.search), activeIcon: Icon(Icons.search, color: Colors.red,), title: Text("发现")),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), activeIcon: Icon(Icons.account_circle, color: Colors.red,), title: Text("我")),
         ],
+        currentIndex: _index,
+        onTap: (index){
+          setState(() {
+            _index = index;
+          });
+          _pageController.animateToPage(index, duration: Duration(seconds: 1), curve: ElasticOutCurve(1.0));
+        },
       ),
-      body: _buildSuggestions(),
-    );
-  }
-
-  Widget _buildSuggestions(){
-    
-    return ListView.builder(
-        padding: const EdgeInsets.all(13.0),
-        itemBuilder: (context, i){
-          if(i.isOdd) return Divider();
-
-          final index = i ~/ 2;
-          if(index >= _suggestions.length){
-            _suggestions.addAll(generateWordPairs().take(10));
-          }
-          return _buildRow(_suggestions[index]);
-    });
-  }
-
-  Widget _buildRow(WordPair pair) {
-    final alreadySaved = _saved.contains(pair);
-
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
+      body: PageView(
+        children: _pages,
+        controller: _pageController,
+        physics: NeverScrollableScrollPhysics(),
+        onPageChanged: (index){
+          setState(() {
+            _index = index;
+          });
+        },
       ),
+      /*body: PageView.builder(
+        itemCount: 4,
+        controller: _pageController,
+        itemBuilder: (context, index){
 
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved ? Colors.red : null,
-      ),
+          var str = "item $_index";
 
-      onTap: (){
-        setState(() {
-          if(alreadySaved){
-            _saved.remove(pair);
-          }else{
-            _saved.add(pair);
-          }
-        });
-      },
-    );
-  }
-  
-
-  void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-          builder: (context){
-            final tiles = _saved.map(
-                (pair){
-                  return ListTile(
-                    title: Text(
-                      pair.asPascalCase,
-                      style: _biggerFont,
-                    ),
-                  );
-                },
-            );
-            final divided = ListTile.divideTiles(
-                context: context,
-                tiles: tiles)
-                .toList();
-
-            return Scaffold(
-              appBar: AppBar(
-                title: Text("Saved Suggestions"),
-              ),
-              body: ListView(children: divided),
-            );
-          })
+          return Center(
+            child: Text(str),
+          );
+        },
+        onPageChanged: (index){
+          setState(() {
+            _index = index;
+          });
+        },
+      ),*/
     );
   }
 }
