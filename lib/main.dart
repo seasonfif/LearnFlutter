@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/ListPage.dart';
 import 'package:learn_flutter/SecondPage.dart';
+import 'package:learn_flutter/widgets_demo/TextDemo.dart';
 
 void main(){
   runApp(MyApp());
@@ -16,7 +17,14 @@ class MyApp extends StatelessWidget{
       theme: ThemeData(
         primaryColor: Colors.red
       ),
-      home: HomePage()
+      home: HomePage(),
+      routes: <String, WidgetBuilder>{
+        "TextDemo1" : (context){ return TextDemo(); },
+        "TextDemo2" : (context){ return TextDemo(); },
+        "TextDemo3" : (context){ return TextDemo(); },
+        "TextDemo4" : (context){ return TextDemo(); },
+        "TextDemo5" : (context){ return TextDemo(); },
+      },
     );
   }
 }
@@ -34,11 +42,19 @@ class HomePageState extends State<HomePage>{
 
   var _pageController = PageController();
 
-  var _pages = <Widget>[ListPage(), SecondPage(), SecondPage(), SecondPage()];
+  var _pages;
+
+  void initData(context) {
+    _pages = <Widget>[ListPage(), SecondPage(parent: context,), SecondPage(parent: context,), SecondPage(parent: context,)];
+  }
 
   @override
   Widget build(BuildContext context) {
+    initData(context);
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Demo"),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
 //        fixedColor: Colors.black,
@@ -53,7 +69,7 @@ class HomePageState extends State<HomePage>{
           setState(() {
             _index = index;
           });
-          _pageController.animateToPage(index, duration: Duration(seconds: 1), curve: ElasticOutCurve(1.0));
+          _pageController.animateToPage(index, duration: Duration(milliseconds: 500), curve: Curves.fastOutSlowIn);
         },
       ),
       body: PageView(
