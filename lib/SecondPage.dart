@@ -23,7 +23,11 @@ class SecondPageState extends State {
       debugShowCheckedModeBanner: false,
       title: "SecondPage",
       theme: ThemeData(primaryColor: Colors.red),
-      home: Scaffold(body: WidgetsListView(parent: parent,)),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("WidgetsDemo"),
+        ),
+        body: WidgetsListView(parent: parent,)),
       /*routes: <String, WidgetBuilder>{
         "TextDemo1" : (context){ return TextDemo(); },
         "TextDemo2" : (context){ return TextDemo(); },
@@ -49,8 +53,8 @@ class WidgetsListView extends StatefulWidget{
 class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliveClientMixin{
 
   final _widgetsList = <String>[
-    "TextDemo1",
-    "TextDemo2",
+    "TextDemo",
+    "ImageDemo",
     "TextDemo3",
     "TextDemo4",
     "TextDemo5",
@@ -78,22 +82,22 @@ class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliv
     return ListTile(
       title: Text(item),
       trailing: Icon(Icons.chevron_right),
-      onTap: _itemTapped(),
+      onTap: _itemTapped(item),
       onLongPress: _itemLongPressed(item),
     );
   }
 
-  _itemTapped() => (){
+  _itemTapped(item) => (){
       //显示跳转 直接指定跳转的页面
-      Navigator.of(widget.parent)
+      /*Navigator.of(widget.parent)
           .push(MaterialPageRoute(builder: (context) => TextDemo()))
           .then((result){
             Scaffold.of(context).showSnackBar(SnackBar(content: Text("snakebar: $result"), duration: Duration(milliseconds: 500),));
-          });
+          });*/
 
       //隐式跳转 先定义路由表，后使用key跳转
       //这里的context是当前界面的 能获取当前页面注册的路由表信息
-      //Navigator.of(widget.parent).pushNamed(_widgetsList[index]);
+      Navigator.of(widget.parent).pushNamed(item);
   };
 
   _itemLongPressed(item) => (){
@@ -127,6 +131,10 @@ class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliv
               child: Text("取消"),
               onPressed: () {
                 Navigator.of(context).pop();
+
+//              显示flutter授权 授权内容已经由flutter内部实现
+//              showAboutDialog(context: context);
+//              showLicensePage(context: context);
               },
             )
           ],
