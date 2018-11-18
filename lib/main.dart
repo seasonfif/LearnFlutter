@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/ListPage.dart';
-import 'package:learn_flutter/SecondPage.dart';
+import 'package:learn_flutter/WidgetsDemoList.dart';
 import 'package:learn_flutter/SettingsPage.dart';
+import 'package:learn_flutter/widgets_demo/CardDemo.dart';
+import 'package:learn_flutter/widgets_demo/ContainerDemo.dart';
 import 'package:learn_flutter/widgets_demo/ImageDemo.dart';
+import 'package:learn_flutter/widgets_demo/SliverAppBarDemo.dart';
+import 'package:learn_flutter/widgets_demo/StackDemo.dart';
 import 'package:learn_flutter/widgets_demo/TextDemo.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
@@ -28,9 +32,10 @@ class MyApp extends StatelessWidget{
       routes: <String, WidgetBuilder>{
         "TextDemo" : (context){ return TextDemo(); },
         "ImageDemo" : (context){ return ImageDemo(); },
-        "TextDemo3" : (context){ return TextDemo(); },
-        "TextDemo4" : (context){ return TextDemo(); },
-        "TextDemo5" : (context){ return TextDemo(); },
+        "CardDemo" : (context){ return CardDemo(); },
+        "StackDemo" : (context){ return StackDemo(); },
+        "ContainerDemo" : (context){ return ContainerDemo(); },
+        "SliverAppBarDemo" : (context){ return SliverAppBarDemo(); },
       },
     );
   }
@@ -52,7 +57,7 @@ class HomePageState extends State<HomePage>{
   var _pages;
 
   void initData(context) {
-    _pages = <Widget>[ListPage(), SecondPage(parent: context,), SecondPage(parent: context,), SettingsPage()];
+    _pages = <Widget>[ListPage(), WidgetsDemoList(parent: context,), WidgetsDemoList(parent: context,), SettingsPage()];
   }
 
   @override

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/widgets_demo/TextDemo.dart';
 
-class SecondPage extends StatefulWidget {
+class WidgetsDemoList extends StatefulWidget {
 
   final BuildContext parent;
 
-  SecondPage({this.parent});
+  WidgetsDemoList({this.parent});
 
   @override
   State<StatefulWidget> createState() {
-    return SecondPageState(parent: parent);
+    return WidgetsDemoListState(parent: parent);
   }
 }
 
-class SecondPageState extends State {
+class WidgetsDemoListState extends State {
   final BuildContext parent;
-  SecondPageState({this.parent});
+  WidgetsDemoListState({this.parent});
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +25,9 @@ class SecondPageState extends State {
       theme: ThemeData(primaryColor: Colors.red),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("WidgetsDemo"),
+          title: Text("WidgetsDemoList"),
         ),
         body: WidgetsListView(parent: parent,)),
-      /*routes: <String, WidgetBuilder>{
-        "TextDemo1" : (context){ return TextDemo(); },
-        "TextDemo2" : (context){ return TextDemo(); },
-        "TextDemo3" : (context){ return TextDemo(); },
-        "TextDemo4" : (context){ return TextDemo(); },
-        "TextDemo5" : (context){ return TextDemo(); },
-      },*/
     );
   }
 }
@@ -55,9 +48,10 @@ class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliv
   final _widgetsList = <String>[
     "TextDemo",
     "ImageDemo",
-    "TextDemo3",
-    "TextDemo4",
-    "TextDemo5",
+    "CardDemo",
+    "StackDemo",
+    "ContainerDemo",
+    "SliverAppBarDemo",
   ];
 
   @override

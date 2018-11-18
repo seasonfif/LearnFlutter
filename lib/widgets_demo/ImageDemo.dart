@@ -29,23 +29,24 @@ class ContentWidget extends StatelessWidget {
   }
 
   var _images = <Widget>[
-    _wrapContainer(270.0, Image.asset("images/car.png")),
-    _wrapContainer(270.0, Image.asset("images/hotel.png")),
-    _wrapContainer(270.0, Image.asset("images/shopping.png")),
+    _wrapContainer(50.0, Image.asset("images/car.png")),
+    _wrapContainer(50.0, Image.asset("images/hotel.png")),
+    _wrapContainer(50.0, Image.asset("images/shopping.png")),
   ];
 
   var _images_expaned = <Widget>[
-    _wrapExpaned(Image.asset("images/car.png"), 1),
-    _wrapExpaned(Image.asset("images/hotel.png"), 1),
-    _wrapExpaned(Image.asset("images/shopping.png"), 1),
+    _wrapExpaned(_wrapContainer(50.0, Image.asset("images/car.png")), 1),
+    _wrapExpaned(_wrapContainer(50.0, Image.asset("images/hotel.png")), 1),
+    _wrapExpaned(_wrapContainer(50.0, Image.asset("images/shopping.png")), 1),
   ];
 
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: _images_expaned,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: _images,
     );
   }
 }

@@ -44,6 +44,7 @@ flutter:
     - images/hotel.png
     - images/huagong.png
     - images/shopping.png
+    - images/fj.jpeg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
