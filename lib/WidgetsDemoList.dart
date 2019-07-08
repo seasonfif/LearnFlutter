@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'widgets_demo/CardDemo.dart';
-import 'widgets_demo/ContainerDemo.dart';
-import 'widgets_demo/ImageDemo.dart';
-import 'widgets_demo/SliverAppBarDemo.dart';
-import 'widgets_demo/StackDemo.dart';
-import 'widgets_demo/TextDemo.dart';
-
 class WidgetsDemoList extends StatefulWidget {
 
   final BuildContext parent;

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/DartDemoList.dart';
 import 'package:learn_flutter/ListPage.dart';
-import 'package:learn_flutter/WidgetsDemoList.dart';
 import 'package:learn_flutter/SettingsPage.dart';
+import 'package:learn_flutter/WidgetsDemoList.dart';
 import 'package:learn_flutter/dart_demo/AsyncDemo.dart';
 import 'package:learn_flutter/short_video/video_feed.dart';
-import 'package:learn_flutter/short_video/video_page.dart';
 import 'package:learn_flutter/widgets_demo/CardDemo.dart';
 import 'package:learn_flutter/widgets_demo/ContainerDemo.dart';
 import 'package:learn_flutter/widgets_demo/ImageDemo.dart';
 import 'package:learn_flutter/widgets_demo/SliverAppBarDemo.dart';
 import 'package:learn_flutter/widgets_demo/StackDemo.dart';
 import 'package:learn_flutter/widgets_demo/TextDemo.dart';
-import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
+
+import 'animation_demo/animation_controller_demo.dart';
 
 void main(){
   runApp(MyApp());
@@ -40,6 +39,7 @@ class MyApp extends StatelessWidget{
         "StackDemo" : (context){ return StackDemo(); },
         "ContainerDemo" : (context){ return ContainerDemo(); },
         "SliverAppBarDemo" : (context){ return SliverAppBarDemo(); },
+        "AnimationTest" : (context){ return AnimationTest(); },
         "AsyncDemo" : (context){ return AsyncDemo(); },
       },
     );

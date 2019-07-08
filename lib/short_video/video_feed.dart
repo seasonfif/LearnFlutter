@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:learn_flutter/short_video/http_controller.dart';
 import 'package:learn_flutter/short_video/video_model.dart';
 import 'package:learn_flutter/short_video/video_page.dart';

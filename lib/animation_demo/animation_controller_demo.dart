@@ -18,7 +18,7 @@ class AnimationTestState extends State<AnimationTest> with SingleTickerProviderS
         vsync: this)
       ..addListener((){
         setState(() {
-          debugPrint("_animationController.value=${_animationController.value}");
+          //修改状态，引起build
         });
       });
     _animationController.forward();
