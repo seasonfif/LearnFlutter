@@ -50,7 +50,10 @@ class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliv
     "StackDemo",
     "ContainerDemo",
     "SliverAppBarDemo",
-    "AnimationTest",
+    "AnimationDemo",
+    "AnimatedWidgetDemo",
+    "AnimatedBuiderDemo",
+    "StaggerAnimationDemo",
   ];
 
   @override

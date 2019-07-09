@@ -10,8 +10,12 @@ import 'package:learn_flutter/widgets_demo/ImageDemo.dart';
 import 'package:learn_flutter/widgets_demo/SliverAppBarDemo.dart';
 import 'package:learn_flutter/widgets_demo/StackDemo.dart';
 import 'package:learn_flutter/widgets_demo/TextDemo.dart';
+import 'package:learn_flutter/widgets_demo/pageview_demo.dart';
 
+import 'animation_demo/animated_buider_demo.dart';
+import 'animation_demo/animated_widget_demo.dart';
 import 'animation_demo/animation_controller_demo.dart';
+import 'animation_demo/stagger_animation_demo.dart';
 
 void main(){
   runApp(MyApp());
@@ -39,7 +43,10 @@ class MyApp extends StatelessWidget{
         "StackDemo" : (context){ return StackDemo(); },
         "ContainerDemo" : (context){ return ContainerDemo(); },
         "SliverAppBarDemo" : (context){ return SliverAppBarDemo(); },
-        "AnimationTest" : (context){ return AnimationTest(); },
+        "AnimationDemo" : (context){ return AnimationDemo(); },
+        "AnimatedWidgetDemo" : (context){ return AnimatedWidgetDemo(); },
+        "AnimatedBuiderDemo" : (context){ return AnimatedBuiderDemo(); },
+        "StaggerAnimationDemo" : (context){ return StaggerAnimationDemo(); },
         "AsyncDemo" : (context){ return AsyncDemo(); },
       },
     );
@@ -62,7 +69,7 @@ class HomePageState extends State<HomePage>{
   var _pages;
 
   void initData(context) {
-    _pages = <Widget>[ListPage(), WidgetsDemoList(parent: context,), VideoFeed(parent: context,), SettingsPage()];
+    _pages = <Widget>[ListPage(), WidgetsDemoList(parent: context,), PageViewDemo(), SettingsPage()];
   }
 
   @override
