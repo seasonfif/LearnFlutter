@@ -1,6 +1,8 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+import 'platform_service/log_util.dart';
+
 class ListPage extends StatefulWidget {
 
   @override
@@ -23,12 +25,12 @@ class RandomWordsState extends State with AutomaticKeepAliveClientMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("initState");
+    LogUtil.e("ListPage->initState");
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    LogUtil.d("ListPage->build");
     return Scaffold(
       appBar: AppBar(
         title: Text("Startup Name Generator"),

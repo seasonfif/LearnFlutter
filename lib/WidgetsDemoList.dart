@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'platform_service/log_util.dart';
+
 class WidgetsDemoList extends StatefulWidget {
 
   final BuildContext parent;
@@ -17,7 +19,14 @@ class WidgetsDemoListState extends State {
   WidgetsDemoListState({this.parent});
 
   @override
+  void initState() {
+    super.initState();
+    LogUtil.e("WidgetsDemoList->initState");
+  }
+
+  @override
   Widget build(BuildContext context) {
+    LogUtil.d("WidgetsDemoList->build");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "SecondPage",

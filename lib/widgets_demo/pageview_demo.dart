@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn_flutter/platform_service/log_util.dart';
 import 'package:transformer_page_view/transformer_page_view.dart';
 
 class PageViewDemo extends StatefulWidget{
@@ -16,6 +17,7 @@ class PageViewDemoState extends State<PageViewDemo>{
   @override
   void initState() {
     super.initState();
+    LogUtil.e("PageViewDemo->initState");
     pageController.addListener((){
       setState(() {
         pageOffset = pageController.offset / 600;
@@ -31,6 +33,7 @@ class PageViewDemoState extends State<PageViewDemo>{
 
   @override
   Widget build(BuildContext context) {
+    LogUtil.d("PageViewDemo->build");
     return Scaffold(
         appBar: AppBar(
           title: Text("PageViewDemo"),

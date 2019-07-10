@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'about.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
+import 'platform_service/log_util.dart';
+
 class SettingsPage extends StatelessWidget{
 
   @override
@@ -28,8 +30,14 @@ class SettingsBodyState extends State<SettingsBody>{
   var _debug = false;
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    LogUtil.e("SettingsPage->initState");
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    LogUtil.d("SettingsPage->initState");
     debugPaintSizeEnabled = _debug;
 
     return Column(
