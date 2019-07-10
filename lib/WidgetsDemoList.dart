@@ -44,6 +44,7 @@ class WidgetsListView extends StatefulWidget{
 class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliveClientMixin{
 
   final _widgetsList = <String>[
+    "LayoutDemo",
     "TextDemo",
     "ImageDemo",
     "CardDemo",

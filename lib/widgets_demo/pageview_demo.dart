@@ -11,9 +11,17 @@ class PageViewDemoState extends State<PageViewDemo>{
 
   PageController pageController = PageController();
 
+  double pageOffset = 0.0;
+
   @override
   void initState() {
     super.initState();
+    pageController.addListener((){
+      setState(() {
+        pageOffset = pageController.offset / 600;
+        debugPrint("pageController.offset=${pageController.offset}");
+      });
+    });
   }
 
   @override
@@ -30,7 +38,7 @@ class PageViewDemoState extends State<PageViewDemo>{
         body: _buildPageView());
   }
 
-  Widget _buildPageView() {
+  Widget _buildTransformerPageView() {
     return TransformerPageView(
       scrollDirection: Axis.vertical,
       transformer: ScaleAndFadeTransformer(),
@@ -47,6 +55,31 @@ class PageViewDemoState extends State<PageViewDemo>{
         child: new Text('$index', style: TextStyle(fontSize: 64.0)),
       ),
     );
+  }
+
+  Widget _buildPageView() {
+    return PageView.builder(
+      scrollDirection: Axis.vertical,
+      controller: pageController,
+      itemBuilder: (context, index){
+        var currentLeftPageIndex = pageOffset.floor();
+        var currentPageOffsetPercent = pageOffset - currentLeftPageIndex;
+        return Transform.translate(
+          offset: Offset(0.0, (pageOffset - index)*600),
+          child: Transform.scale(
+            scale: currentLeftPageIndex == index
+                ? 1 - currentPageOffsetPercent
+                : currentPageOffsetPercent,
+            child: Container(
+              color: Colors.indigo[(index+1) * 100],
+              child: Center(
+                child: new Text('$index', style: TextStyle(fontSize: 64.0)),
+              ),
+            ),
+          ),
+        );
+      },
+      itemCount: 10,);
   }
 }
 

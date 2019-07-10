@@ -1,46 +1,55 @@
 import 'package:flutter/material.dart';
 
-class DartDemoList extends StatefulWidget {
+import 'layout_demo/image_text_column.dart';
+
+class LayoutDemo extends StatefulWidget {
 
   final BuildContext parent;
 
-  DartDemoList({this.parent});
+  LayoutDemo({this.parent});
 
   @override
   State<StatefulWidget> createState() {
-    return DartDemoListState(parent: parent);
+    return LayoutDemoState(parent: parent);
   }
 }
 
-class DartDemoListState extends State {
+class LayoutDemoState extends State {
   final BuildContext parent;
-  DartDemoListState({this.parent});
+  LayoutDemoState({this.parent});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("DartDemoList"),
-        ),
-        body: DartListView(parent: parent,));
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text("DartDemoList"),
+          ),
+          body: LayoutDemoListView(parent: parent,)
+      ),
+      routes: {
+        "ImageTextColumn":(context){return ImageTextColumn();},
+      },
+    );
   }
 }
 
-class DartListView extends StatefulWidget{
+class LayoutDemoListView extends StatefulWidget{
   final BuildContext parent;
-  DartListView({this.parent});
+  LayoutDemoListView({this.parent});
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return DartListViewState();
+    return LayoutDemoListViewState();
   }
 }
 
-class DartListViewState extends State<DartListView> with AutomaticKeepAliveClientMixin{
+class LayoutDemoListViewState extends State<LayoutDemoListView> with AutomaticKeepAliveClientMixin{
 
-  final _widgetsList = <String>[
-    "AsyncDemo",
+  final _layoutList = <String>[
+    "ImageTextColumn",
   ];
 
   @override
@@ -50,7 +59,7 @@ class DartListViewState extends State<DartListView> with AutomaticKeepAliveClien
   @override
   Widget build(BuildContext context) {
 
-    Iterable<Widget> widgetTiles = _widgetsList.map((item){
+    Iterable<Widget> widgetTiles = _layoutList.map((item){
       return _buildListTile(item);
     });
 
@@ -71,7 +80,7 @@ class DartListViewState extends State<DartListView> with AutomaticKeepAliveClien
   }
 
   _itemTapped(item) => (){
-      Navigator.of(widget.parent).pushNamed(item);
+      Navigator.of(context).pushNamed(item);
   };
 
   _itemLongPressed(item) => (){

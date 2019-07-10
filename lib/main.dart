@@ -16,6 +16,7 @@ import 'animation_demo/animated_buider_demo.dart';
 import 'animation_demo/animated_widget_demo.dart';
 import 'animation_demo/animation_controller_demo.dart';
 import 'animation_demo/stagger_animation_demo.dart';
+import 'layout_demo.dart';
 
 void main(){
   runApp(MyApp());
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget{
       ),
       home: HomePage(),
       routes: <String, WidgetBuilder>{
+        "LayoutDemo" : (context){ return LayoutDemo(); },
         "TextDemo" : (context){ return TextDemo(); },
         "ImageDemo" : (context){ return ImageDemo(); },
         "CardDemo" : (context){ return CardDemo(); },
