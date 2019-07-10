@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class LogUtil{
 
-  static const _platform = const MethodChannel("io.flutter.plugins/log");
+  static const _platform = const MethodChannel("io.flutter.plugins.LogPlugin");
 
   static const String TAG = "flutter_log";
 
