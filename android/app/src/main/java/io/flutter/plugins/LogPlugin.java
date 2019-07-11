@@ -11,6 +11,10 @@ public class LogPlugin implements MethodCallHandler {
 
     private static final String LOG_PLUGIN_CHANNEL_NAME = "io.flutter.plugins.LogPlugin";
 
+    public static void register(PluginRegistry registry) {
+        registerWith(registry.registrarFor(LOG_PLUGIN_CHANNEL_NAME));
+    }
+
     public static void registerWith(PluginRegistry.Registrar registrar){
         MethodChannel channel = new MethodChannel(registrar.messenger(), LOG_PLUGIN_CHANNEL_NAME);
         LogPlugin logPlugin = new LogPlugin();

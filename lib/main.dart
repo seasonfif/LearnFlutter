@@ -11,12 +11,15 @@ import 'package:learn_flutter/widgets_demo/SliverAppBarDemo.dart';
 import 'package:learn_flutter/widgets_demo/StackDemo.dart';
 import 'package:learn_flutter/widgets_demo/TextDemo.dart';
 import 'package:learn_flutter/widgets_demo/pageview_demo.dart';
+import 'package:learn_flutter/widgets_demo/scaled_layout.dart';
 
 import 'animation_demo/animated_buider_demo.dart';
 import 'animation_demo/animated_widget_demo.dart';
 import 'animation_demo/animation_controller_demo.dart';
 import 'animation_demo/stagger_animation_demo.dart';
 import 'layout_demo.dart';
+import 'widgets_demo/video_demo.dart';
+import 'widgets_demo/video_page_demo.dart';
 
 void main(){
   runApp(MyApp());
@@ -39,6 +42,9 @@ class MyApp extends StatelessWidget{
       home: HomePage(),
       routes: <String, WidgetBuilder>{
         "LayoutDemo" : (context){ return LayoutDemo(); },
+        "VideoPageDemo" : (context){ return VideoPageDemo(); },
+        "VideoDemo" : (context){ return VideoDemo(); },
+        "ScaledLayout" : (context){ return ScaledLayout(); },
         "TextDemo" : (context){ return TextDemo(); },
         "ImageDemo" : (context){ return ImageDemo(); },
         "CardDemo" : (context){ return CardDemo(); },

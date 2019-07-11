@@ -54,6 +54,9 @@ class WidgetsListViewState extends State<WidgetsListView> with AutomaticKeepAliv
 
   final _widgetsList = <String>[
     "LayoutDemo",
+    "VideoPageDemo",
+    "VideoDemo",
+    "ScaledLayout",
     "TextDemo",
     "ImageDemo",
     "CardDemo",
