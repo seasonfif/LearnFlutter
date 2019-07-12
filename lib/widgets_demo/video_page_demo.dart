@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/platform_service/log_util.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPageDemo extends StatefulWidget{
@@ -16,7 +17,7 @@ class VideoPageDemoState extends State<VideoPageDemo> {
   PageController pageController = PageController();
 
   List videos = [
-    'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4',
+    'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4',
   ];
 
   @override
@@ -30,19 +31,19 @@ class VideoPageDemoState extends State<VideoPageDemo> {
   }
 
   void _loadMore() async{
-
-    Future.delayed(Duration(seconds: 13), (){
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
-      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4');
+    Future.delayed(Duration(seconds: 2), (){
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
+      videos.add('https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4');
       setState(() {
+        showToast("后台刷新成功${videos.length}", position: ToastPosition.bottom);
         LogUtil.e("后台加载数据成功:${videos.length}");
       });
     });
@@ -56,11 +57,13 @@ class VideoPageDemoState extends State<VideoPageDemo> {
   @override
   Widget build(BuildContext context) {
     LogUtil.d("VideoPageDemo->build");
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("VideoPageDemo"),
-        ),
-        body: _buildVideoPage());
+    return OKToast(
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text("VideoPageDemo"),
+          ),
+          body: _buildVideoPage()),
+    );
   }
 
   Widget _buildVideoPage() {
@@ -94,12 +97,15 @@ class VideoItemState extends State<VideoItem>{
   @override
   void initState() {
     super.initState();
-    _videoPlayerController = VideoPlayerController.network(widget.url);
+    _videoPlayerController = VideoPlayerController.network(widget.url)
+    ..addListener((){
+      LogUtil.d("_videoPlayerController.value=${_videoPlayerController.value.aspectRatio}");
+    });
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
-      aspectRatio: 9 / 16,
+      aspectRatio: 3/2,
       autoPlay: true,
-      looping: true,
+      looping: false,
       // Try playing around with some of these other options:
 
       // showControls: false,

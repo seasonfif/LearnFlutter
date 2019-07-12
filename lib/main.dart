@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:learn_flutter/ListPage.dart';
 import 'package:learn_flutter/SettingsPage.dart';
 import 'package:learn_flutter/WidgetsDemoList.dart';
 import 'package:learn_flutter/dart_demo/AsyncDemo.dart';
-import 'package:learn_flutter/short_video/video_feed.dart';
 import 'package:learn_flutter/widgets_demo/CardDemo.dart';
 import 'package:learn_flutter/widgets_demo/ContainerDemo.dart';
 import 'package:learn_flutter/widgets_demo/ImageDemo.dart';
@@ -77,7 +75,7 @@ class HomePageState extends State<HomePage>{
   var _pages;
 
   void initData(context) {
-    _pages = <Widget>[ListPage(), WidgetsDemoList(parent: context,), PageViewDemo(), SettingsPage()];
+    _pages = <Widget>[VideoPageDemo(), WidgetsDemoList(parent: context,), PageViewDemo(), SettingsPage()];
   }
 
   @override
