@@ -41,6 +41,7 @@ build/
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
 **/ios/**/*.moved-aside
+**/ios/**/flutter_export_environment.sh
 **/ios/**/*.pbxuser
 **/ios/**/*.perspectivev3
 **/ios/**/*sync/

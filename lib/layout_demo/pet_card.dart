@@ -112,43 +112,49 @@ class PetCardState extends State<PetCard>{
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Row(
-            children: <Widget>[
-              CircleAvatar(
-                radius: 20,
-                backgroundColor: Color(0xFFCCCCCC),
-                backgroundImage: NetworkImage("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1402367109,4157195964&fm=27&gp=0.jpg"),
-              ),
-              Padding(padding: EdgeInsets.only(right: 8),),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "大米要煮小米粥",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF333333),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Color(0xFFCCCCCC),
+                  backgroundImage: NetworkImage("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1402367109,4157195964&fm=27&gp=0.jpg"),
+                ),
+                Padding(padding: EdgeInsets.only(right: 8),),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "大米要煮小米粥我们可以实践Container组件设置不同的borderRadius",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF333333),
+                      ),
                     ),
-                  ),
-                  Padding(padding: EdgeInsets.only(top: 3),),
-                  Text(
-                    "小米|我家的小仓鼠",
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF999999),
+                    Padding(padding: EdgeInsets.only(top: 3),),
+                    Text(
+                      "小米|我家的小仓鼠",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF999999),
+                      ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
-          Text(
-            "15:20",
-            style: TextStyle(
-              fontSize: 13,
-              color: Colors.grey
+          Container(
+            width: 50,
+            color: Colors.blue,
+            child: Text(
+              "15:20",
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.grey
+              ),
             ),
           ),
         ],
