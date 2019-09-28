@@ -10,10 +10,10 @@ class LogUtil{
   LogUtil._();
 
   static void d(String msg, {String tag=TAG}){
-    _platform.invokeMethod('logd', {'tag': tag, 'msg': msg});
+    // _platform.invokeMethod('logd', {'tag': tag, 'msg': msg});
   }
 
   static void e(String msg, {String tag=TAG}){
-    _platform.invokeMethod('loge', {'tag': tag, 'msg': msg});
+    // _platform.invokeMethod('loge', {'tag': tag, 'msg': msg});
   }
 }

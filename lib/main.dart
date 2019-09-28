@@ -7,10 +7,10 @@ import 'redux/redux_demo.dart';
 import 'scoped_model/scope_demo.dart';
 
 void main(){
-  runFishRedux();
+  // runFishRedux();
   // runScope();
   // run_redux();
-  // run_demo();
+  runDemo();
 }
 
 void runDemo(){
