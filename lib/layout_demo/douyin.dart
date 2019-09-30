@@ -41,39 +41,49 @@ class Home extends StatelessWidget{
 
     return Stack(
       children: [
-        Container(
-          decoration: BoxDecoration(color: Colors.yellowAccent),
-        ),
 
         Container(
           height: 100,
           decoration: BoxDecoration(color: Colors.pinkAccent),
         ),
 
-        Container(
-          alignment: Alignment(1.0, -1.0),
-          margin: EdgeInsets.only(top:300),
-          width: 100,
-          height: 300,
-          decoration: BoxDecoration(color: Colors.white),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Container(
+            margin: EdgeInsets.only(bottom: 150),
+            width: 100,
+            height: 250,
+            decoration: BoxDecoration(color: Colors.white),
+          ),
         ),
 
-        // Container(
-        //   margin: EdgeInsets.only(bottom: 0),
-        //   width: 100,
-        //   height: 100,
-        //   decoration: BoxDecoration(color: Colors.white),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(color: Colors.green),
+          ),
+        ),
+
+        // Positioned(
+        //   left: 0,
+        //   bottom: 0,
+        //   height: 150,
+        //   width: 0.7 * width,
+        //   child: Container(
+        //     decoration: BoxDecoration(color: Colors.red),
+        //   ),
         // ),
 
-        Positioned(
-          left: 0,
-          bottom: 0,
-          height: 150,
-          width: 0.7 * width,
+        Align(
+          alignment: Alignment.bottomLeft,
           child: Container(
+            width: 0.7 * width,
+            height: 150,
             decoration: BoxDecoration(color: Colors.red),
           ),
-        )
+        ),
       ]
     ); 
   }

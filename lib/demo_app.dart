@@ -9,6 +9,7 @@ import 'package:learn_flutter/widgets_demo/ImageDemo.dart';
 import 'package:learn_flutter/widgets_demo/SliverAppBarDemo.dart';
 import 'package:learn_flutter/widgets_demo/StackDemo.dart';
 import 'package:learn_flutter/widgets_demo/TextDemo.dart';
+import 'package:learn_flutter/widgets_demo/page_demo.dart';
 import 'package:learn_flutter/widgets_demo/pageview_demo.dart';
 import 'package:learn_flutter/widgets_demo/scaled_layout.dart';
 
