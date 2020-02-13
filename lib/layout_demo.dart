@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learn_flutter/layout_demo/douyin.dart';
+import 'package:learn_flutter/widgets_demo/MyPageViewTest.dart';
 
 import 'layout_demo/image_text_column.dart';
 
@@ -32,6 +33,7 @@ class LayoutDemoState extends State {
       routes: {
         "ImageTextColumn":(context){return ImageTextColumn();},
         "DouyinLayout":(context){return DouyinLayout();},
+        "MyPageViewLayout":(context){return MyPageViewLayout();},
       },
     );
   }
@@ -52,7 +54,8 @@ class LayoutDemoListViewState extends State<LayoutDemoListView> with AutomaticKe
 
   final _layoutList = <String>[
     "ImageTextColumn",
-    "DouyinLayout"
+    "DouyinLayout",
+    "MyPageViewLayout",
   ];
 
   @override

@@ -1,5 +1,8 @@
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class DouyinLayout extends StatefulWidget {
   @override
@@ -7,16 +10,28 @@ class DouyinLayout extends StatefulWidget {
 }
 
 class _DouyinLayoutState extends State<DouyinLayout> {
+
+  RefreshController _refreshController = RefreshController(initialRefresh: true);
+
   @override
   Widget build(BuildContext context) {
 
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            color: Colors.yellowAccent
+        body: SmartRefresher(
+          onRefresh: () async{
+
+            await Future.delayed(Duration(milliseconds: 1000));
+            _refreshController.refreshCompleted();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+                color: Colors.yellowAccent
+            ),
+            child: Home(),
           ),
-          child: Home(),
+
+          controller: _refreshController,
         ),
 
         bottomNavigationBar: BottomAppBar(
